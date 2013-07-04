@@ -1,5 +1,5 @@
 {
-    "name": "amplifier/adapptrapi",
+    "name": "amplifier/adapptrapiclient",
     "description": "Adapptr API client for PHP.",
     "type": "yii-extension",
     "license": "MIT",
