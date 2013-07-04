@@ -1,0 +1,885 @@
+{
+    "apiVersion": "2",
+    "baseUrl": "http://adapptrapi/",
+    "description": "Foo is an API that allows you to Baz Bar",
+    "name": "adapptr API Interface",
+    "operations": {
+        "allCampaigns": {
+            "httpMethod": "GET",
+            "responseClass": "allCampaignsOutput",
+            "summary": "Return all campaigns",
+            "uri": "/v2/campaign"
+        },
+        "s3BucketLocation": {
+            "httpMethod": "GET",
+            "responseClass": "s3BucketLocationsOutput",
+            "summary": "Return bucket locations",
+            "uri": "/v2/bucket/location"
+        },
+        "s3Bucket": {
+            "httpMethod": "GET",
+            "responseClass": "s3BucketOutput",
+            "summary": "Return bucket locations",
+            "uri": "/v2/bucket/bucket/{id}",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "location id or all",
+                    "required": true
+                }
+            }
+        },
+        "createUser": {
+            "httpMethod": "POST",
+            "responseClass": "createUserOutput",
+            "summary": "create a new user",
+            "uri": "/v2/user/createUser",
+            "parameters": {
+                "username": {
+                    "location": "json",
+                    "type": "string",
+                    "required": true
+                },
+                "email": {
+                    "location": "json",
+                    "type": "string",
+                    "required": true
+                },
+                "password": {
+                    "location": "json",
+                    "type": "string",
+                    "required": true
+                },
+                "affiliateId": {
+                    "location": "json",
+                    "type": "string",
+                    "required": true
+                }
+            }
+
+        },
+        "quotaUsed": {
+            "httpMethod": "GET",
+            "responseClass": "quotaUsedOutput",
+            "summary": "Return bucket quota infromation",
+            "uri": "/v2/bucket/quotaUsed/{id}",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "location id or all",
+                    "required": true
+                }
+            }
+        },
+        "UsersByGroupId": {
+            "httpMethod": "GET",
+            "responseClass": "UsersByGroupIdOutput",
+            "summary": "Return all apps in the same group",
+            "uri": "/v2/user/UsersByGroupId/{id}",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "id of the group",
+                    "required": true
+                }
+            }
+        },
+        "appsByGroupMembership": {
+            "httpMethod": "GET",
+            "responseClass": "appsByGroupMembership",
+            "summary": "Return all apps in the same group",
+            "uri": "/v2/app/ByGroupId/{id}",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "id of the group",
+                    "required": true
+                }
+            }
+        },
+        "WeeklyCreatedCountByGroup": {
+            "httpMethod": "GET",
+            "responseClass": "WeeklyCreatedCountByGroupOutput",
+            "summary": "Return all apps in the same group",
+            "uri": "/v2/app/WeeklyCreatedCountByGroup/{id}",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "id of the group",
+                    "required": true
+                }
+            }
+        },
+        "UserMonthlyCreatedCountByGroup": {
+            "httpMethod": "GET",
+            "responseClass": "UserMonthlyCreatedCountByGroupOutput",
+            "summary": "Return all apps in the same group",
+            "uri": "/v2/user/MonthlyCreatedCountByGroup/{id}",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "id of the user",
+                    "required": true
+                }
+            }
+        },
+        "getState": {
+            "httpMethod": "GET",
+            "responseClass": "getStateOutput",
+            "summary": "get the state of an application",
+            "uri": "/v2/app/getState/{id}",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "application id",
+                    "required": true
+                }
+            }
+
+        },
+        "getApp": {
+            "httpMethod": "GET",
+            "responseClass": "getAppOutput",
+            "summary": "get an application",
+            "uri": "/v2/app/app/{id}",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "application id",
+                    "required": true
+                }
+            }
+
+        },
+        "getRSSFeed": {
+            "httpMethod": "GET",
+            "responseClass": "getRSSFeedOutput",
+            "summary": "get an application",
+            "uri": "/v2/rss/app/{id}",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "application id",
+                    "required": true
+                }
+            }
+
+        },
+        "isUniqueVanityName": {
+            "httpMethod": "GET",
+            "responseClass": "isUniqueOutput",
+            "summary": "check if an app name is unique",
+            "uri": "/v2/app/isUniqueVanityName/{name}",
+            "parameters": {
+                "name": {
+                    "location": "uri",
+                    "description": "application name",
+                    "required": true
+                }
+            }
+
+        },
+        "getAppsByUserId": {
+            "httpMethod": "GET",
+            "responseClass": "getAppsByUserIdOutput",
+            "summary": "get a list of apps for a specified user",
+            "uri": "/v2/app/byUserId/{id}",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "user id",
+                    "required": true
+                }
+            }
+        },
+        "appsStatsByGroupMembership": {
+            "httpMethod": "GET",
+            "responseClass": "appsStatsByGroupMembershipOutput",
+            "summary": "get a list of apps for a specified user",
+            "uri": "/v2/app/StateCountByGroup/{id}",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "group id",
+                    "required": true
+                }
+            }
+        },
+        "build": {
+            "httpMethod": "POST",
+            "responseClass": "buildOutput",
+            "summary": "Send and Email",
+            "uri": "/v2/app/build",
+            "parameters": {
+                "appId": {
+                    "location": "json",
+                    "type": "string",
+                    "required": true
+                }
+            }
+
+        },
+        "createApp": {
+            "httpMethod": "POST",
+            "responseClass": "createAppOutput",
+            "summary": "create an app",
+            "uri": "/v2/app/create",
+            "parameters": {
+                "appName": {
+                    "location": "json",
+                    "type": "string",
+                    "required": true
+                },
+                "userId": {
+                    "location": "json",
+                    "type": "string",
+                    "required": true
+                },
+                "description": {
+                    "location": "json",
+                    "type": "string",
+                    "required": true
+                },
+                "builderVersion": {
+                    "location": "json",
+                    "type": "string",
+                    "required": true
+                },
+                "vanityName": {
+                    "location": "json",
+                    "type": "string",
+                    "required": true
+                },
+                "locationId": {
+                    "location": "json",
+                    "type": "string",
+                    "required": true
+                }
+            }
+
+        },
+        "stage": {
+            "httpMethod": "POST",
+            "responseClass": "stageOutput",
+            "summary": "Stage an app",
+            "uri": "/v2/app/stage",
+            "parameters": {
+                "appId": {
+                    "location": "json",
+                    "type": "string",
+                    "required": true
+                }
+            }
+
+        },
+        "deploy": {
+            "httpMethod": "POST",
+            "responseClass": "deployOutput",
+            "summary": "Stage an app",
+            "uri": "/v2/app/deploy",
+            "parameters": {
+                "appId": {
+                    "location": "json",
+                    "type": "string",
+                    "required": true
+                }
+            }
+
+        },
+        "stop": {
+            "httpMethod": "POST",
+            "responseClass": "stopOutput",
+            "summary": "Stage an app",
+            "uri": "/v2/app/stop",
+            "parameters": {
+                "appId": {
+                    "location": "json",
+                    "type": "string",
+                    "required": true
+                }
+            }
+
+        },
+         "sendMail": {
+            "httpMethod": "POST",
+            "responseClass": "getSendMailOutput",
+            "summary": "Send and Email",
+            "uri": "/v2/mail/send",
+            "parameters": {
+                "data": {
+                    "location": "json",
+                    "type": "object",
+                    "properties": {
+                        "Destination":
+                                {
+                                    "location": "json",
+                                    "type": "object",
+                                    "properties": {
+                                        "BccAddresses": {
+                                            "location": "json",
+                                            "type": "array"
+                                        },
+                                        "ToAddresses": {
+                                            "location": "json",
+                                            "type": "array"
+                                        }
+                                    }
+                                },
+                        "Message": {
+                            "location": "json",
+                            "type": "object",
+                            "properties": {
+                                "Body": {
+                                    "location": "json",
+                                    "type": "object",
+                                    "properties": {
+                                        "Html": {
+                                            "type": "object",
+                                            "location": "json",
+                                            "properties":
+                                                    {
+                                                        "Data": {
+                                                            "type": "string",
+                                                            "location": "json"
+                                                        }
+                                                    }
+                                        }
+                                    }
+                                },
+                                "Subject": {
+                                    "type": "object",
+                                    "location": "json",
+                                    "properties": {
+                                        "Data": {
+                                            "type": "string",
+                                            "location": "json"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "Source": {
+                            "type": "string",
+                            "location": "json"
+                        }
+                    }
+                },
+                "requestType": {
+                    "location": "json",
+                    "type": "string"
+                }
+            }
+        },
+        "updateStatus": {
+            "httpMethod": "POST",
+            "uri": "/v2/app/setState",
+            "summary": "update the build status of an application",
+            "responseClass": "updateStatusOutput",
+            "parameters": {
+                "appId": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "state": {
+                    "location": "json",
+                    "type": "string"
+                }
+            }
+        },
+        "getSMSInfo": {
+            "httpMethod": "GET",
+            "responseClass": "getSMSInfoOutput",
+            "summary": "get info about SMS volumes",
+            "uri": "/v2/sms/info/{id}",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "application id",
+                    "required": true
+                }
+            }
+
+        },
+        "getSMSSentByUser": {
+            "httpMethod": "GET",
+            "responseClass": "getSMSSentByUserOutput",
+            "summary": "get total number of SMS sent for ALL apps owned by this user",
+            "uri": "/v2/sms/TotalSentByUser/{id}",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "user id",
+                    "required": true
+                }
+            }
+
+        },
+        "getSMSSentByGroup": {
+            "httpMethod": "GET",
+            "responseClass": "getSMSSentByGroupOutput",
+            "summary": "get total number of SMS sent for ALL apps owned by ALL users in the group",
+            "uri": "/v2/sms/TotalSentByGroup/{id}",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "group id",
+                    "required": true
+                }
+            }
+
+        }
+    },
+    "models": {
+        "buildOutput": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "success": {
+                    "location": "json",
+                    "type": "string"
+                }
+            }
+
+        },
+        "createUserOutput": {
+            "type": "object",
+            "properties": {
+                "success": {
+                    "type": "string",
+                    "location": "json"
+                },
+                "id": {
+                    "type": "string",
+                    "location": "json"
+                },
+                "errors": {
+                    "type": "string",
+                    "location": "json"
+                }
+            }
+        },
+        "stageOutput": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "success": {
+                    "location": "json",
+                    "type": "string"
+                }
+            }
+
+        },
+        "deployOutput": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "success": {
+                    "location": "json",
+                    "type": "string"
+                }
+            }
+
+        },
+        "stopOutput": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "success": {
+                    "location": "json",
+                    "type": "string"
+                }
+            }
+
+        },
+        "UsersByGroupIdOutput": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "success": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "data": {
+                    "location": "json",
+                    "type": "string"
+                }
+            }
+
+        },
+        "appsByGroupMembership": {
+            "type": "object",
+            "properties": {
+                "success": {
+                    "type": "string",
+                    "location": "json"
+                },
+                "message": {
+                    "type": "string",
+                    "location": "json"
+                },
+                "data": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "location": "json"
+                        }
+                    }
+                }
+            }
+        },
+        "allCampaignsOutput": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "success": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "data": {
+                    "location": "json",
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "location": "json",
+                            "type": "string"
+                        },
+                        "name": {
+                            "location": "json",
+                            "type": "string"
+                        },
+                        "brand_ id": {
+                            "location": "json",
+                            "type": "string"
+                        },
+                        "start": {
+                            "location": "json",
+                            "type": "string"
+                        },
+                        "end": {
+                            "location": "json",
+                            "type": "string"
+                        },
+                        "description": {
+                            "location": "json",
+                            "type": "string"
+                        },
+                        "objective": {
+                            "location": "json",
+                            "type": "string"
+                        },
+                        "location_id": {
+                            "location": "json",
+                            "type": "string"
+                        },
+                        "created": {
+                            "location": "json",
+                            "type": "string"
+                        },
+                        "modified": {
+                            "location": "json",
+                            "type": "string"
+                        },
+                        "s3BucketId": {
+                            "location": "json",
+                            "type": "string"
+                        },
+                        "state": {
+                            "location": "json",
+                            "type": "string"
+                        },
+                        "vanityName": {
+                            "location": "json",
+                            "type": "string"
+                        },
+                        "bucketPrefix": {
+                            "location": "json",
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "s3BucketOutput": {
+            "type": "object",
+            "properties": {
+                "success": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "bucket": {
+                    "type": "object",
+                    "properties": {
+                        "bucket": {
+                            "location": "json",
+                            "type": "string"
+
+                        },
+                        "bucketLocation": {
+                            "location": "json",
+                            "type": "string"
+
+                        },
+                        "bucketObjects": {
+                            "location": "json",
+                            "type": "array"
+                        }
+                    }
+                }
+            }
+        },
+        "s3BucketLocationsOutput": {
+            "type": "object",
+            "properties": {
+                "success": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "locations": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "location": "json",
+                            "type": "string"
+                        },
+                        "location": {
+                            "location": "json",
+                            "type": "string"
+                        },
+                        "name": {
+                            "location": "json",
+                            "type": "string"
+                        },
+                        "endpoint": {
+                            "location": "json",
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "updateStatusOutput": {
+            "type": "object",
+            "properties": {
+                "success": {
+                    "type": "string",
+                    "location": "json"
+                }
+            }
+        },
+        "getRSSFeedOutput": {
+            "type": "object",
+            "properties": {
+                "success": {
+                    "type": "string",
+                    "location": "json"
+                }
+            }
+        },
+        "getStateOutput": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "string",
+                    "location": "json"
+                }
+
+            }
+        },
+        "getAppOutput": {
+            "type": "object",
+            "properties": {
+                "app": {
+                    "type": "string",
+                    "location": "json"
+                }
+
+            }
+        },
+        "getSMSSentByUserOutput": {
+            "type": "object",
+            "properties": {
+                "success": {
+                    "type": "string",
+                    "location": "json"
+                },
+                "total": {
+                    "type": "string",
+                    "location": "json"
+                }
+
+            }
+        },
+        "getSMSSentByGroupOutput": {
+            "type": "object",
+            "properties": {
+                "success": {
+                    "type": "string",
+                    "location": "json"
+                },
+                "total": {
+                    "type": "string",
+                    "location": "json"
+                }
+
+            }
+        },
+        "isUniqueOutput": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "string",
+                    "location": "json"
+                }
+
+            }
+        },
+        "createAppOutput": {
+            "type": "object",
+            "properties": {
+                "success": {
+                    "type": "string",
+                    "location": "json"
+                },
+                "appId": {
+                    "type": "string",
+                    "location": "json"
+                }
+            }
+        },
+        "getSendMailOutput": {
+            "type": "object",
+            "properties": {
+                "success": {
+                    "type": "string",
+                    "location": "json"
+                },
+                "message": {
+                    "type": "string",
+                    "location": "json"
+                }
+            }
+        },
+        "getAppsByUserIdOutput": {
+            "type": "object",
+            "properties": {
+                "success": {
+                    "type": "string",
+                    "location": "json"
+                },
+                "message": {
+                    "type": "string",
+                    "location": "json"
+                },
+                "data": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "location": "json"
+                        }
+                    }
+                }
+            }
+        },
+        "appsStatsByGroupMembershipOutput": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "string",
+                    "location": "json"
+                },
+                "state": {
+                    "type": "string",
+                    "location": "json"
+                }
+            }
+        },
+        "WeeklyCreatedCountByGroupOutput": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "string",
+                    "location": "json"
+                },
+                "state": {
+                    "type": "string",
+                    "location": "json"
+                }
+            }
+        },
+        "UserMonthlyCreatedCountByGroupOutput": {
+            "type": "object",
+            "properties": {
+                "count": {
+                    "type": "string",
+                    "location": "json"
+                },
+                "monthCreated": {
+                    "type": "string",
+                    "location": "json"
+                }
+            }
+        },
+        "quotaUsedOutput": {
+            "type": "object",
+            "properties": {
+                "success": {
+                    "type": "string",
+                    "location": "json"
+                },
+                "used": {
+                    "type": "string",
+                    "location": "json"
+
+                },
+                "max": {
+                    "type": "string",
+                    "location": "json"
+                }
+            }
+        },
+        "getSMSInfoOutput": {
+            "type": "object",
+            "properties": {
+                "success": {
+                    "type": "string",
+                    "location": "json"
+                },
+                "warnVolume": {
+                    "type": "string",
+                    "location": "json"
+                },
+                "maxVolume": {
+                    "type": "string",
+                    "location": "json"
+                },
+                "currentUse": {
+                    "type": "string",
+                    "location": "json"
+                }
+            }
+        }
+
+
+
+    }
+}
